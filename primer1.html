@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <link rel="icon" type="image/logogood.png" href="image/logogood.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>商品詳細頁</title>
+    <link rel="stylesheet" href="assets/css/paintstyle.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navone">
+            <!-- 上層：Logo + 漢堡按鈕 -->
+            <div class="nav-header">
+                <a href="index.html"><img src="image/logo.png" class="logo"></a>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            </div>
+
+            <!-- 下層：導覽列連結 -->
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="product.html">Products</a>
+                <a href="red.html">Color</a>
+                <a href="loginpage.html">Account</a>
+                <a href="cart.html">Cart</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="image-section">
+            <img src="image/Paint3-1.png" alt="商品圖片" />
+        </div>
+
+        <div class="info-section">
+            <h1>多功能底漆 Fresh Start® Primer</h1>
+            <div class="price">NT$2,600 / gal</div>
+
+            <div class="tabs">
+                <div class="tab active" onclick="showTab('features')">產品特性</div>
+                <div class="tab" onclick="showTab('ingredients')">產品成分</div>
+            </div>
+
+            <div id="features" class="tab-content active">
+                <ul>
+                    <li>壓克⼒聚合基底</li>
+                    <li>覆蓋力超強</li>
+                    <li>強化漆膜效能</li>
+                    <li>快乾、施工方便</li>
+                    <li>低VOC、低氣味</li>
+                    <li>台灣綠建材認證</li>
+                </ul>
+            </div>
+
+            <div id="ingredients" class="tab-content">
+                <ul>
+                    <li>產品內容成分:丙烯酸樹脂(壓克力乳膠基底)、二氧化鈦、礦物填充、水</li>
+                    <li>漆膜厚度：乾燥後 1.4 密耳</li>
+                    <li>固體成分：41 ± 1%</li>
+                    <li>產品檢測：符合 CNS4940 第一種測試</li>
+                    <li>注意事項：底漆只需要施作一道，不需過色</li>
+                </ul>
+            </div>
+
+            <label>光澤</label>
+            <div class="options" id="sheen-options">
+                <button onclick="selectOption(this, 'sheen')">無光澤</button>
+            </div>
+
+            <label>選擇顏色</label>
+            <select id="color-select">
+                <option value="">請選擇顏色</option>
+                <option value="white">白色 white</option>
+                <option value="gray">灰色 gray</option>
+                <option value="black">黑色 black</option>
+                <option value="brown">棕色 brown</option>
+                <option value="red">紅色 red</option>
+                <option value="orange">橙色 orange</option>
+                <option value="yellow">黃色 yellow</option>
+                <option value="green">綠色 green</option>
+                <option value="blue">藍色 blue</option>
+                <option value="pink">粉色 pink</option>
+                <option value="purple">紫色 purple</option>
+            </select>
+
+            <div class="quantity">
+                <label for="quantity">數量：</label>
+                <input type="number" id="quantity" value="1" min="1" />
+            </div>
+
+            <div class="add-cart">
+                <button onclick="addToCart()">加入購物車</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container2">
+        <!-- 商品評論 -->
+        <div style="margin-top: 40px; margin-bottom: 40px;">
+            <h2>商品評論</h2>
+
+            <!-- 現有評論 -->
+            <div style="margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+                <strong>王小明</strong> ⭐⭐⭐⭐⭐
+                <div style="color: #666; font-size: 14px;">2025/06/01</div>
+                <p>這款塗料品質很好，刷起來非常滑順，顏色也很飽和！</p>
+            </div>
+
+            <div style="margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
+                <strong>林美麗</strong> ⭐⭐⭐⭐☆
+                <div style="color: #666; font-size: 14px;">2025/05/30</div>
+                <p>遮蓋力很棒，但氣味稍微重了一點，不過可以接受。</p>
+            </div>
+
+            <!-- 評論輸入區 -->
+            <form onsubmit="event.preventDefault(); alert('評論送出成功！');">
+                <label for="review-name">你的名字</label><br>
+                <input type="text" id="review-name" placeholder="請輸入姓名" required
+                    style="width: 100%; max-width: 400px; padding: 8px;"><br><br>
+
+                <label for="review-rating">給予星等</label><br>
+                <select id="review-rating" required style="width: 200px; padding: 8px;">
+                    <option value="">請選擇評分</option>
+                    <option value="5">⭐⭐⭐⭐⭐ - 非常滿意</option>
+                    <option value="4">⭐⭐⭐⭐ - 滿意</option>
+                    <option value="3">⭐⭐⭐ - 普通</option>
+                    <option value="2">⭐⭐ - 不太好</option>
+                    <option value="1">⭐ - 非常差</option>
+                </select><br><br>
+
+                <label for="review-text">評論內容</label><br>
+                <textarea id="review-text" rows="4" required style="width: 100%; max-width: 600px; padding: 8px;"
+                    placeholder="請寫下您的使用心得..."></textarea><br><br>
+
+                <button type="submit"
+                    style="padding: 10px 20px; background-color: black; color: white; border: none; border-radius: 5px;">送出評論</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="button-container">
+        <a href="product.html">
+            <div class="back">Back</div>
+        </a>
+    </div>
+
+    <script>
+        /*導覽列*/
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelector(`.tab[onclick*="${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function selectOption(btn, group) {
+            document.querySelectorAll(`#${group}-options button`).forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+
+        function addToCart() {
+            const sheen = document.querySelector('#sheen-options .selected')?.textContent;
+
+            const color = document.getElementById('color-select').value;
+            const quantity = document.getElementById('quantity').value;
+
+            if (!sheen || !color) {
+                alert('請選擇完整的商品選項');
+                return;
+            }
+
+            const product = {
+                name: "多功能底漆 Fresh Start® Primer",
+                price: 2600,
+                sheen,
+                color,
+                quantity: parseInt(quantity, 10)
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert('商品已加入購物車！');
+        }
+    </script>
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                <img src="image/logo.png" alt="Find Your Color" class="footer-logo-img">
+            </div>
+
+            <div class="footer-info">
+                <h3>公司資訊</h3>
+                <p>公司名稱：Find Your Color</p>
+                <p>地址：桃園市中壢區中北路200號</p>
+                <p>客服電話：01-2345-6789</p>
+                <p>客服時間：週一至週五 09:00 - 18:00</p>
+                <p>Email：findyourcolor@gmail.com</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>網站資訊</h3>
+                <p><a href="index.html">首頁</a></p>
+                <p><a href="product.html">商品介紹</a></p>
+                <p><a href="red.html">色彩參考</a></p>
+                <p><a href="loginpage.html">會員中心</a></p>
+                <p><a href="cart.html">購物車</a></p>
+            </div>
+
+            <div class="footer-map">
+                <h3>地圖</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d976.7125197735551!2d121.24064899742733!3d24.957501625778804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468221447a0f021%3A0x2b86d2650bb8bcff!2z5Lit5Y6f5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1749567989730!5m2!1szh-TW!2stw"
+                    width="100%" height="200" style="border:0; margin: 20px 0; max-width: 100%;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>

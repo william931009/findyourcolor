@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <link rel="icon" type="image/logogood.png" href="image/logogood.png">
+  <meta charset="UTF-8">
+  <title>Color Palette</title>
+  <style>
+    body {
+      font-family: 微軟正黑體;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 共用樣式 */
+    .navone {
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px #0b9444;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 80px;
+      z-index: 100;
+      padding: 0px 20px;
+      box-sizing: border-box;
+      display: flex;
+      /* 加這行：橫向排版 */
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* 上層：logo + 漢堡按鈕 */
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* logo */
+    .logo {
+      height: 80px;
+      width: auto;
+    }
+
+    /* 導覽連結 */
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bolder;
+      padding: 10px 20px;
+      background-color: #0b9444;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* 陰影 */
+    }
+
+    .nav-links a:hover {
+      background-color: #247024;
+      color: #fff;
+      text-decoration: underline;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      /* 陰影 */
+    }
+
+    /* 漢堡按鈕（預設隱藏） */
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      margin-right: auto;
+    }
+
+    /* 手機版樣式 */
+    @media (max-width: 768px) {
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        /* 預設收合 */
+        background-color: #ffffff;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        border-radius: 8px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .navone {
+        flex-direction: column;
+        /*小螢幕時直排 */
+        align-items: flex-start;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0px;
+      font-size: 50px;
+    }
+
+    .family-bar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 120px;
+      width: 70px;
+      height: 70px;
+    }
+
+    .family-bar a {
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+      border: 1px solid #ccc;
+      transition: 0.2s;
+      z-index: 50;
+    }
+
+    .family-bar a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .Black {
+      background: #4A4A4A;
+      color: rgb(230, 230, 230);
+    }
+
+    .Blue {
+      background: #A7C7E7;
+    }
+
+    .white {
+      background: white;
+      color: black;
+    }
+
+    .Gray {
+      background: #C9C9C9;
+    }
+
+    .Green {
+      background: #A8BFA0;
+      ;
+    }
+
+    .Orange {
+      background: #F7CBA0;
+    }
+
+    .Pink {
+      background: #E3A6A1;
+    }
+
+    .Purple {
+      background: #C6A8D9;
+    }
+
+    .Red {
+      background: #D98C70;
+    }
+
+    .Yellow {
+      background: #E4B169;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin: 50px auto;
+      max-width: 800px;
+      justify-content: center;
+      padding-left: 80px;
+    }
+
+    .color-box {
+      width: 120px;
+      height: 100px;
+      padding: 25px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+
+    .color-box:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    /* 手機版 */
+    @media (max-width: 1300px) {
+
+      /* family bar 手機 */
+      .family-bar {
+        flex-direction: row;
+        align-items: center;
+        margin-top: 150px;
+        width: 100%;
+        height: auto;
+      }
+
+      .family-bar a {
+        z-index: 0;
+      }
+
+      /* color grid 手機*/
+      .color-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding-left: 10px;
+        max-width: 90%;
+        margin: 20px auto;
+        gap: 5px;
+      }
+
+      .color-box {
+        width: 80px;
+        height: 60px;
+        font-size: 10px;
+        padding: 8px;
+      }
+
+      h3 {
+        font-size: 30px;
+      }
+    }
+
+    /* Footer 基本樣式 */
+    footer {
+      background-color: white;
+      box-shadow: 0 -4px 10px #0b9444;
+      padding: 20px;
+      width: 100%;
+    }
+
+    /* 主容器：RWD Grid */
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    /* Logo 圖片 */
+    .footer-logo-img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+    }
+
+    /* 各區標題 */
+    .footer-info h3,
+    .footer-links h3,
+    .footer-map h3 {
+      margin-bottom: 10px;
+      text-decoration: underline;
+      font-size: 25px;
+    }
+
+    /* 文字內容 */
+    .footer-info p,
+    .footer-links p {
+      margin: 5px 0;
+      font-size: 20px;
+      color: black;
+    }
+
+    /* 連結樣式 */
+    .footer-links a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+      color: gray;
+    }
+
+    /* 地圖區塊 */
+    .footer-map {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 響應式：手機版 */
+    @media (max-width: 900px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-logo,
+      .footer-info,
+      .footer-links,
+      .footer-map {
+        margin: 10px auto;
+        width: 100%;
+      }
+
+      .footer-logo-img {
+        width: 80%;
+        max-width: 200px;
+      }
+
+      .footer-info p,
+      .footer-links p {
+        font-size: 18px;
+      }
+
+      .footer-info h3,
+      .footer-links h3,
+      .footer-map h3 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navone">
+      <!-- 上層：Logo + 漢堡按鈕 -->
+      <div class="nav-header">
+        <a href="index.html"><img src="image/logo.png" class="logo"></a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      </div>
+
+      <!-- 下層：導覽列連結 -->
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="red.html">Color</a>
+        <a href="loginpage.html">Account</a>
+        <a href="cart.html">Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="family-bar">
+    <a href="red.html" class="Red">Red</a>
+    <a href="pink.html" class="Pink">Pink</a>
+    <a href="yellow.html" class="Yellow">Yellow</a>
+    <a href="orange.html" class="Orange">Orange</a>
+    <a href="green.html" class="Green">Green</a>
+    <a href="white.html" class="white" style="color: black;">White</a>
+    <a href="blue.html" class="Blue">Blue</a>
+    <a href="purple.html" class="Purple">Purple</a>
+    <a href="gray.html" class="Gray">Gray</a>
+    <a href="black.html" class="Black">Black</a>
+  </div>
+
+  <h1>- Black Palette -</h1>
+  <a href="linkproduct.html" style="text-decoration: none; color: inherit;">
+    <div class="color-grid">
+      <div class="color-box" style="background:#000000; color:#fff;">Black</div>
+      <div class="color-box" style="background:#050505; color:#fff;">Almost Black</div>
+      <div class="color-box" style="background:#0a0a0a; color:#fff;">Jet Black</div>
+      <div class="color-box" style="background:#0f0f0f; color:#fff;">Carbon Black</div>
+      <div class="color-box" style="background:#141414; color:#fff;">Pure Black</div>
+      <div class="color-box" style="background:#191919; color:#fff;">Rich Black</div>
+      <div class="color-box" style="background:#1e1e1e; color:#fff;">Ink Black</div>
+      <div class="color-box" style="background:#232323; color:#fff;">Charcoal Black</div>
+      <div class="color-box" style="background:#282828; color:#fff;">Graphite Black</div>
+      <div class="color-box" style="background:#2d2d2d; color:#fff;">Slate Black</div>
+      <div class="color-box" style="background:#333333; color:#fff;">Dim Black</div>
+      <div class="color-box" style="background:#383838; color:#fff;">Soft Black</div>
+      <div class="color-box" style="background:#3d3d3d; color:#fff;">Mild Black</div>
+      <div class="color-box" style="background:#424242; color:#fff;">Faded Black</div>
+      <div class="color-box" style="background:#474747; color:#fff;">Grayish Black</div>
+      <div class="color-box" style="background:#4c4c4c; color:#fff;">Dark Gray Black</div>
+      <div class="color-box" style="background:#515151; color:#fff;">Steel Black</div>
+      <div class="color-box" style="background:#565656; color:#fff;">Iron Black</div>
+      <div class="color-box" style="background:#5b5b5b; color:#fff;">Lead Black</div>
+      <div class="color-box" style="background:#606060; color:#fff;">Granite Black</div>
+      <div class="color-box" style="background:#656565; color:#fff;">Ash Black</div>
+      <div class="color-box" style="background:#6a6a6a; color:#fff;">Stone Black</div>
+      <div class="color-box" style="background:#6f6f6f; color:#fff;">Fog Black</div>
+      <div class="color-box" style="background:#747474; color:#fff;">Dust Black</div>
+      <div class="color-box" style="background:#797979; color:#fff;">Shadow Black</div>
+      <div class="color-box" style="background:#7e7e7e; color:#fff;">Smoke Black</div>
+      <div class="color-box" style="background:#838383; color:#fff;">Light Smoke</div>
+      <div class="color-box" style="background:#888888; color:#fff;">Gray Black</div>
+      <div class="color-box" style="background:#8d8d8d; color:#fff;">Pearl Black</div>
+      <div class="color-box" style="background:#929292; color:#fff;">Silver Black</div>
+      <div class="color-box" style="background:#979797; color:#fff;">Pale Black</div>
+      <div class="color-box" style="background:#9c9c9c; color:#fff;">Soft Charcoal</div>
+      <div class="color-box" style="background:#a1a1a1; color:#000;">Platinum Black</div>
+      <div class="color-box" style="background:#a6a6a6; color:#000;">Frosted Black</div>
+      <div class="color-box" style="background:#ababab; color:#000;">Snow Black</div>
+      <div class="color-box" style="background:#b0b0b0; color:#000;">Winter Black</div>
+      <div class="color-box" style="background:#b5b5b5; color:#000;">Light Frost</div>
+      <div class="color-box" style="background:#bababa; color:#000;">Moonlight Black</div>
+      <div class="color-box" style="background:#bfbfbf; color:#000;">Cloud Black</div>
+      <div class="color-box" style="background:#c4c4c4; color:#000;">Silver Frost</div>
+      <div class="color-box" style="background:#c9c9c9; color:#000;">Light Mist</div>
+      <div class="color-box" style="background:#cecece; color:#000;">Morning Fog</div>
+      <div class="color-box" style="background:#d3d3d3; color:#000;">Early Gray</div>
+      <div class="color-box" style="background:#d8d8d8; color:#000;">Misty Black</div>
+      <div class="color-box" style="background:#dddddd; color:#000;">Bright Mist</div>
+      <div class="color-box" style="background:#e2e2e2; color:#000;">Gentle Mist</div>
+      <div class="color-box" style="background:#e7e7e7; color:#000;">Ultra Pale Black</div>
+      <div class="color-box" style="background:#ececec; color:#000;">Very Pale Black</div>
+      <div class="color-box" style="background:#f0f0f0; color:#000;">Whisper Black</div>
+    </div>
+  </a>
+
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-logo">
+        <img src="image/logo.png" alt="Find Your Color" class="footer-logo-img">
+      </div>
+
+      <div class="footer-info">
+        <h3>公司資訊</h3>
+        <p>公司名稱：Find Your Color</p>
+        <p>地址：桃園市中壢區中北路200號</p>
+        <p>客服電話：01-2345-6789</p>
+        <p>客服時間：週一至週五 09:00 - 18:00</p>
+        <p>Email：findyourcolor@gmail.com</p>
+      </div>
+
+      <div class="footer-links">
+        <h3>網站資訊</h3>
+        <p><a href="index.html">首頁</a></p>
+        <p><a href="product.html">商品介紹</a></p>
+        <p><a href="red.html">色彩參考</a></p>
+        <p><a href="loginpage.html">會員中心</a></p>
+        <p><a href="cart.html">購物車</a></p>
+      </div>
+
+      <div class="footer-map">
+        <h3>地圖</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d976.7125197735551!2d121.24064899742733!3d24.957501625778804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468221447a0f021%3A0x2b86d2650bb8bcff!2z5Lit5Y6f5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1749567989730!5m2!1szh-TW!2stw"
+          width="100%" height="200" style="border:0; margin: 20px 0; max-width: 100%;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
+  </footer>
+</body>
+
+
+
+
+<script>
+  /*導覽列*/
+  function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+  }
+</script>
+
+</html>

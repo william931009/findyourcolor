@@ -1,0 +1,356 @@
+* {
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
+    scroll-behavior: smooth; /*滾動畫面*/
+}
+
+/* 共用樣式 */
+.navone {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px 	#0b9444;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 100;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    display: flex;           /* 加這行：橫向排版 */
+    justify-content: space-between;
+    align-items: center;
+}
+  
+/* 上層：logo + 漢堡按鈕 */
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+/* logo */
+.logo {
+    height: 80px;
+    width: auto;
+}
+  
+/* 導覽連結 */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+  
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 10px 20px;
+    background-color: #0b9444;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 陰影 */
+}
+  
+.nav-links a:hover {
+    background-color: 	#247024;
+    color: #fff;
+    text-decoration: underline;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 陰影 */
+}
+  
+/* 漢堡按鈕（預設隱藏） */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    margin-right: auto;
+}
+  
+/* 手機版樣式 */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      display: none; /* 預設收合 */
+      background-color: #ffffff;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      border-radius: 8px;
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    .navone {
+        flex-direction: column;      /*小螢幕時直排 */
+        align-items: flex-start;
+    }
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navtwo {
+    padding: 1em;
+    text-align: center;
+}
+
+.navtwo a {
+    padding: 10px 20px;
+    color: rgb(0, 0, 0);
+    margin: 0 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.navtwo a:hover {
+    text-decoration: underline;
+    background-color: rgb(237, 237, 237);
+    color: #000000;
+    border-radius: 15px;
+}
+
+.filter-btn.pretty{
+    text-decoration: underline;
+    background-color: #d8f6e1;
+    color: #0b9444;
+    border-radius: 15px;
+}
+
+.filter-btn.pretty:hover{
+    text-decoration: underline;
+    background-color: #d8f6e1;
+    color: #0b9444;
+    border-radius: 15px;
+}
+
+.firstphoto {
+    background-image: url(../../image/photo1.jpg);
+    background-size: cover;         /* 圖片覆蓋整個區域 */
+    background-position: center;    /* 圖片置中 */
+    height: 300px;
+    display: flex;                  /* 使用 flex 置中內容 */
+    justify-content: center;       /* 水平置中 */
+    align-items: center;           /* 垂直置中 */
+    color: rgb(0, 0, 0);                  /* 字體顏色（可改成其他顏色） */
+    font-size: 80px;               /* 字體大小 */
+    margin-top: 50px;
+}
+
+article {
+    padding: 2em;
+    background-color: #ffffff;
+}
+
+#product-list {
+    display: flex;
+    flex-direction: column; /*由上到下排列*/
+    gap: 2em;
+    justify-content: center; /*水平置中*/
+    align-items: center;      /* 水平置中（每個 a 元素置中） */
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex-wrap: wrap; /*小螢幕時允許自動換行*/
+    }
+
+    .article {
+        padding: 0;
+    } 
+    #product-list {
+        padding: 0;
+    }
+}
+
+.product {
+    display: flex;
+    gap: 100px;
+    width: 80%;
+    background-color: #fff;
+    justify-content: baseline; /*水平靠左*/
+    flex-direction: row; /* 子項目水平排列（左→右） */
+    padding: 15px 15px 15px 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.02);
+}
+
+.product img {
+    width: 200px;
+    margin-bottom: 1em; /* 下方外距*/
+    transition: transform 0.3s ease;
+}
+
+.product img:hover {
+    transform: scale(1.05);
+}
+
+
+.product h2 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+.product ul {
+    padding-left: 1.2em;
+    margin-bottom: 1em;
+}
+
+.buttons {
+    display: flex;
+    gap: 1em;
+}
+
+.buttons button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.buttons button:hover {
+    background-color: #7c7c7c;
+}
+
+
+.back {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 10px 30px;
+    background-color: #0b9444;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin: 30px auto; /* 上下距離、左右自動置中 */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.back:hover {
+    background-color: 	#247024;
+    color: #fff;
+    text-decoration: underline;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 陰影 */
+}
+
+/* Footer 基本樣式 */
+footer {
+    background-color: white;
+    box-shadow: 0 -4px 10px #0b9444;
+    padding: 20px;
+    width: 100%;
+}
+  
+/* 主容器：RWD Grid */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+  
+/* Logo 圖片 */
+.footer-logo-img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+  
+/* 各區標題 */
+.footer-info h3,
+.footer-links h3,
+.footer-map h3 {
+    margin-bottom: 10px;
+    text-decoration: underline;
+    font-size: 25px;
+}
+  
+/* 文字內容 */
+.footer-info p,
+.footer-links p {
+    margin: 5px 0;
+    font-size: 20px;
+    color: black;
+}
+  
+/* 連結樣式 */
+.footer-links a {
+    text-decoration: none;
+    color: black;
+}
+  
+.footer-links a:hover {
+    text-decoration: underline;
+    color: gray;
+}
+  
+/* 地圖區塊 */
+.footer-map {
+    display: flex;
+    flex-direction: column;
+}
+  
+/* 響應式：手機版 */
+@media (max-width: 900px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  
+    .footer-logo,
+    .footer-info,
+    .footer-links,
+    .footer-map {
+      margin: 10px auto;
+      width: 100%;
+    }
+  
+    .footer-logo-img {
+      width: 80%;
+      max-width: 200px;
+    }
+  
+    .footer-info p,
+    .footer-links p {
+      font-size: 18px;
+    }
+  
+    .footer-info h3,
+    .footer-links h3,
+    .footer-map h3 {
+      font-size: 22px;
+    }
+}
